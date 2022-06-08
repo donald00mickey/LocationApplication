@@ -15,9 +15,8 @@ import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 
+
 class MainActivity : AppCompatActivity() {
-    //setting up a default variable
-    private var loggedIn: Boolean = false
 
     //initializing location provider
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
@@ -48,21 +47,20 @@ class MainActivity : AppCompatActivity() {
         val name: String? = intent.getStringExtra("nameKey")
         val mobile: String? = intent.getStringExtra("mobileKey")
 
+
+        //share preference reference
+        val sh = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE)
+        val s1 = sh.getString("nameKey", "")
+        val s2 = sh.getString("mobileKey", "")
+        val a = sh.getBoolean("bool", true)
+
         //updating loggedIn boolean value
-        loggedIn = bool
+
         //calling function for getting current location
         getCurrentLocation()
+        nameTextView.text = s1
+        mobileTextView.text = s2
 
-        //checking if the value is changed or not
-        if (!loggedIn) {
-            //here value of logged is still false that's why it's getting sent to login activity
-            startActivity(Intent(this, LoginActivity::class.java))
-        } else {
-            //here value of boolean is changed that's why there is no need to go to another activity
-            //because user is already logged in
-            nameTextView.text = name
-            mobileTextView.text = mobile
-        }
     }
 
     //that's the method where we get our current location
