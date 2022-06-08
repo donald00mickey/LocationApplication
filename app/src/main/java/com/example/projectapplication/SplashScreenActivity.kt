@@ -14,7 +14,7 @@ class SplashScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val sh = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE)
-        val a = sh.getBoolean("bool", true)
+        val a = sh.getBoolean("bool", false)
         !a
 
         if (a){

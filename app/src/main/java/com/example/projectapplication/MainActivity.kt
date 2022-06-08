@@ -40,27 +40,21 @@ class MainActivity : AppCompatActivity() {
         latitudeTextView = findViewById(R.id.latitudeTextView)
         longitudeTextView = findViewById(R.id.longitudeTextView)
 
-        //fetching data from Login activity using intents
-        val intent = intent //initialising getIntent() method
-        //fetching sent values
-        val bool: Boolean = intent.getBooleanExtra("bool", false)
-        val name: String? = intent.getStringExtra("nameKey")
-        val mobile: String? = intent.getStringExtra("mobileKey")
-
-
         //share preference reference
         val sh = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE)
         val s1 = sh.getString("nameKey", "")
         val s2 = sh.getString("mobileKey", "")
-        val a = sh.getBoolean("bool", true)
 
-        //updating loggedIn boolean value
+        if (nameTextView.text.isBlank() && mobileTextView.text.isBlank()){
+            startActivity(Intent(this, LoginActivity::class.java))
+        }else{
+            Toast.makeText(this, "location recieved", Toast.LENGTH_SHORT).show()
+        }
 
         //calling function for getting current location
         getCurrentLocation()
         nameTextView.text = s1
         mobileTextView.text = s2
-
     }
 
     //that's the method where we get our current location
@@ -142,4 +136,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-
