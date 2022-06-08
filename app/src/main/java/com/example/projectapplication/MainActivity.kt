@@ -19,7 +19,7 @@ import com.google.android.gms.location.LocationServices
 
 class MainActivity : AppCompatActivity() {
     //initializing tag for logger
-    private var tag:String = "LocationLogger"
+    private var tag: String = "LocationLogger"
 
     //initializing location provider
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient

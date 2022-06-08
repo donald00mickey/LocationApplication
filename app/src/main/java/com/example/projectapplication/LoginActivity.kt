@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class LoginActivity : AppCompatActivity() {
     //initializing tag for logger
-    private var tag:String = "LocationLogger"
+    private var tag: String = "LocationLogger"
 
     //initializing views
     private lateinit var nameEditText: EditText

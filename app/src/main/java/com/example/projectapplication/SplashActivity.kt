@@ -3,16 +3,16 @@ package com.example.projectapplication
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 
 @SuppressLint("CustomSplashScreen")
 @Suppress("DEPRECATION")
 class SplashActivity : AppCompatActivity() {
     //initializing tag for logger
-    private var tag:String = "LocationLogger"
+    private var tag: String = "LocationLogger"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,14 +26,14 @@ class SplashActivity : AppCompatActivity() {
         !isLoggedIn
 
         //checking if logged in or not
-        if (isLoggedIn){
+        if (isLoggedIn) {
             Log.d(tag, "onCreate: Checking if value of logged in is true")
             Handler().postDelayed({ // This method will be executed once the timer is over
                 Log.d(tag, "onCreate: Starting Main Activity")
                 startActivity(Intent(this@SplashActivity, MainActivity::class.java))
                 finish()
             }, 3000)
-        }else{
+        } else {
             Log.d(tag, "onCreate: Checking if value of logged in is false")
             Handler().postDelayed({ // This method will be executed once the timer is over
                 Log.d(tag, "onCreate: Starting Login Activity")
