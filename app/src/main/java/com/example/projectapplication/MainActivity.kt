@@ -40,21 +40,21 @@ class MainActivity : AppCompatActivity() {
         latitudeTextView = findViewById(R.id.latitudeTextView)
         longitudeTextView = findViewById(R.id.longitudeTextView)
 
-        //share preference reference
+        //shared preference reference
         val sh = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE)
         val s1 = sh.getString("nameKey", "")
         val s2 = sh.getString("mobileKey", "")
-
-        if (nameTextView.text.isBlank() && mobileTextView.text.isBlank()){
-            startActivity(Intent(this, LoginActivity::class.java))
-        }else{
-            Toast.makeText(this, "location recieved", Toast.LENGTH_SHORT).show()
-        }
 
         //calling function for getting current location
         getCurrentLocation()
         nameTextView.text = s1
         mobileTextView.text = s2
+    }
+
+    //it will provide application by going to login screen
+    override fun onBackPressed() {
+        startActivity(Intent(applicationContext, MainActivity::class.java))
+        super.onBackPressed()
     }
 
     //that's the method where we get our current location
